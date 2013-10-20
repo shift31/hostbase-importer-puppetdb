@@ -1,0 +1,17 @@
+{
+    "name": "shift31/hostbase-importer-puppetdb",
+    "description": "Imports nodes and facts from PuppetDB into Hostbase",
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "Shift 31 Consulting",
+            "email": "code@shift31.com"
+        }
+    ],
+    "License": "MIT",
+    "require": {
+        "php": ">=5.3.3",
+        "shift31/hostbase-api-client": "dev-master",
+        "nategood/httpful": "0.2.10"
+    }
+}
