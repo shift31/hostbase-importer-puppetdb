@@ -36,7 +36,14 @@ if ($response instanceof Response) {
 			foreach ($facts as $fact) {
 				if (preg_match('/ssh|swap|_lo|last_run|memoryfree|path|swapfree|uptime|uniqueid|clientcert/', $fact->name)) continue;
 				if ($fact->name == 'ps') continue;
-				$data[$fact->name] = $fact->value;
+
+				if (preg_match('/count|size|mtu/', $fact->name)) {
+					$value = (int) $fact->value;
+				} else {
+					$value = $fact->value;
+				}
+
+				$data[$fact->name] = $value;
 			}
 		}
 
