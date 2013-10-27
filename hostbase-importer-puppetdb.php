@@ -34,13 +34,21 @@ if ($response instanceof Response) {
 			$facts = $response->body;
 
 			foreach ($facts as $fact) {
-				if (preg_match('/ssh|swap|_lo|last_run|memoryfree|path|swapfree|uptime|uniqueid|clientcert/', $fact->name)) continue;
+				if (preg_match('/id|ssh|swap|_lo|last_run|memoryfree|path|swapfree|uptime|uniqueid|clientcert/', $fact->name)) continue;
 				if ($fact->name == 'ps') continue;
 
 				if (preg_match('/count|size|mtu/', $fact->name)) {
 					$value = (int) $fact->value;
 				} else {
 					$value = $fact->value;
+				}
+
+				if ($fact->value == 'false') {
+					$value = false;
+				}
+
+				if ($fact->value == 'true') {
+					$value = true;
 				}
 
 				$data[$fact->name] = $value;
