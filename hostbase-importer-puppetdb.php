@@ -8,6 +8,8 @@ use Httpful\Response;
 
 $config = parse_ini_file(__DIR__ . '/config.ini');
 $puppetDbBaseUrl = $config['puppetDbBaseUrl'];
+$datacenterFact = isset($config['datacenterFact']) ? $config['datacenterFact'] : null;
+$environmentFact = isset($config['environmentFact']) ? $config['environmentFact'] : null;
 
 $HbClient = new HostbaseClient($config['hostbaseUrl']);
 
@@ -52,6 +54,15 @@ if ($response instanceof Response) {
 				}
 
 				$data[$fact->name] = $value;
+
+				// make sure 'datacenter' field is populated
+				if ($fact->name == $datacenterFact) {
+					$data['datacenter'] = $value;
+				}
+				// make sure 'environment' field is populated
+				if ($fact->name == $environmentFact) {
+					$data['environment'] = $value;
+				}
 			}
 		}
 
