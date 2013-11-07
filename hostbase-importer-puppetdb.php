@@ -55,9 +55,9 @@ if ($response instanceof Response) {
 
 				$data[$fact->name] = $value;
 
-				// make sure 'datacenter' field is populated
-				if ($fact->name == $datacenterFact) {
-					$data['datacenter'] = $value;
+				// make sure 'dataCenter' field is populated
+				if ($fact->name == $dataCenterFact) {
+					$data['dataCenter'] = $value;
 				}
 				// make sure 'environment' field is populated
 				if ($fact->name == $environmentFact) {
