@@ -8,7 +8,7 @@ use Httpful\Response;
 
 $config = parse_ini_file(__DIR__ . '/config.ini');
 $puppetDbBaseUrl = $config['puppetDbBaseUrl'];
-$datacenterFact = isset($config['datacenterFact']) ? $config['datacenterFact'] : null;
+$dataCenterFact = isset($config['dataCenterFact']) ? $config['dataCenterFact'] : null;
 $environmentFact = isset($config['environmentFact']) ? $config['environmentFact'] : null;
 
 $HbClient = new HostbaseClient($config['hostbaseUrl']);
