@@ -10,6 +10,7 @@ $config = parse_ini_file(__DIR__ . '/config.ini');
 $puppetDbBaseUrl = $config['puppetDbBaseUrl'];
 $dataCenterFact = isset($config['dataCenterFact']) ? $config['dataCenterFact'] : null;
 $environmentFact = isset($config['environmentFact']) ? $config['environmentFact'] : null;
+$factsToFilterRegex = isset($config['factsToFilterRegex']) ? $config['factsToFilterRegex'] : null;
 
 $HbClient = new HostbaseClient($config['hostbaseUrl']);
 
@@ -36,8 +37,8 @@ if ($response instanceof Response) {
 			$facts = $response->body;
 
 			foreach ($facts as $fact) {
-				if (preg_match('/id|ssh|swap|_lo|last_run|memoryfree|path|swapfree|uptime|uniqueid|clientcert/', $fact->name)) continue;
-				if ($fact->name == 'ps') continue;
+				if (preg_match($factsToFilterRegex, $fact->name)) continue;
+				if ($fact->name == 'ps') continue; // always skip ps, since it will always change
 
 				if (preg_match('/count|size|mtu/', $fact->name)) {
 					$value = (int) $fact->value;
