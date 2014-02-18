@@ -1,5 +1,7 @@
 # Hostbase PuppetDB Importer
 
+Import nodes and facts from PuppetDB into Hostbase
+
 ## Installation
 
 1. Download/clone this whole repository or install with `composer create-project shift31/hostbase-importer-puppetdb`
