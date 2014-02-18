@@ -1,6 +1,6 @@
 # Hostbase PuppetDB Importer
 
-Import nodes and facts from PuppetDB into Hostbase
+Import into or updates Hostbase with nodes and facts from PuppetDB
 
 ## Installation
 

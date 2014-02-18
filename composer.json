@@ -1,6 +1,6 @@
 {
     "name": "shift31/hostbase-importer-puppetdb",
-    "description": "Imports nodes and facts from PuppetDB into Hostbase",
+    "description": "Import into or updates Hostbase with nodes and facts from PuppetDB",
     "authors": [
         {
             "name": "Shift 31 Consulting",
