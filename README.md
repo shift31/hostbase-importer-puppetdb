@@ -18,3 +18,8 @@ dataCenterFact = "a_custom_fact_denoting_datacenter"
 environmentFact = "a_custom_fact_denoting_environment"
 factsToFilterRegex = "/id|ssh|swap|_lo|last_run|memoryfree|path|swapfree|uptime|uniqueid|clientcert/"
 ```
+
+## Run
+
+1. `chmod +x bin/hostbase-importer-puppetdb`
+2. `bin/hostbase-importer-puppetdb`
