@@ -3,9 +3,9 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
-use Shift31\HostbaseClient;
 use Httpful\Request;
 use Httpful\Response;
+use Shift31\HostbaseClient;
 
 $config = parse_ini_file(__DIR__ . '/../config.ini');
 $puppetDbBaseUrl = $config['puppetDbBaseUrl'];
@@ -17,74 +17,78 @@ $HbClient = new HostbaseClient($config['hostbaseUrl']);
 
 // get nodes
 $response = Request::get("$puppetDbBaseUrl/v2/nodes")
-	->sendsAndExpects('application/json')
-	->send();
+    ->sendsAndExpects('application/json')
+    ->send();
 
 if ($response instanceof Response) {
-	$nodes = $response->body;
+    $nodes = $response->body;
 
-	foreach ($nodes as $node) {
+    foreach ($nodes as $node) {
 
-		$data = array();
-		$fqdn = $node->name;
-		$data['fqdn'] = $fqdn;
+        $data = array();
+        $fqdn = $node->name;
+        $data['fqdn'] = $fqdn;
 
-		// get facts
-		$response = Request::get("$puppetDbBaseUrl/v2/nodes/$node->name/facts")
-			->sendsAndExpects('application/json')
-			->send();
+        // get facts
+        $response = Request::get("$puppetDbBaseUrl/v2/nodes/$node->name/facts")
+            ->sendsAndExpects('application/json')
+            ->send();
 
-		if ($response instanceof Response) {
-			$facts = $response->body;
+        if ($response instanceof Response) {
+            $facts = $response->body;
 
-			foreach ($facts as $fact) {
-				if (preg_match($factsToFilterRegex, $fact->name)) continue;
-				if ($fact->name == 'ps') continue; // always skip ps, since it will always change
+            foreach ($facts as $fact) {
+                if (preg_match($factsToFilterRegex, $fact->name)) {
+                    continue;
+                }
+                if ($fact->name == 'ps') {
+                    continue;
+                } // always skip ps, since it will always change
 
-				if (preg_match('/count|size|mtu/', $fact->name)) {
-					$value = (int) $fact->value;
-				} else {
-					$value = $fact->value;
-				}
+                if (preg_match('/count|size|mtu/', $fact->name)) {
+                    $value = (int)$fact->value;
+                } else {
+                    $value = $fact->value;
+                }
 
-				if ($fact->value == 'false') {
-					$value = false;
-				}
+                if ($fact->value == 'false') {
+                    $value = false;
+                }
 
-				if ($fact->value == 'true') {
-					$value = true;
-				}
+                if ($fact->value == 'true') {
+                    $value = true;
+                }
 
-				$data[$fact->name] = $value;
+                $data[$fact->name] = $value;
 
-				// make sure 'dataCenter' field is populated
-				if ($fact->name == $dataCenterFact) {
-					$data['dataCenter'] = $value;
-				}
-				// make sure 'environment' field is populated
-				if ($fact->name == $environmentFact) {
-					$data['environment'] = $value;
-				}
-			}
-		}
+                // make sure 'dataCenter' field is populated
+                if ($fact->name == $dataCenterFact) {
+                    $data['dataCenter'] = $value;
+                }
+                // make sure 'environment' field is populated
+                if ($fact->name == $environmentFact) {
+                    $data['environment'] = $value;
+                }
+            }
+        }
 
-		echo "Importing $fqdn...";
+        echo "Importing $fqdn...";
 
-		try {
-			// add
-			echo "adding...\n";
-			$HbClient->store($data);
-		} catch (Exception $e) {
+        try {
+            // add
+            echo "adding..." . PHP_EOL;
+            $HbClient->store($data);
+        } catch (Exception $e) {
 
-			echo $e->getMessage() . PHP_EOL;
+            echo $e->getMessage() . PHP_EOL;
 
-			try {
-				// update
-				echo "updating...\n";
-				$HbClient->update($fqdn, $data);
-			} catch (Exception $e) {
-				echo $e->getMessage() . PHP_EOL;
-			}
-		}
-	}
+            try {
+                // update
+                echo "updating..." . PHP_EOL;
+                $HbClient->update($fqdn, $data);
+            } catch (Exception $e) {
+                echo $e->getMessage() . PHP_EOL;
+            }
+        }
+    }
 }
