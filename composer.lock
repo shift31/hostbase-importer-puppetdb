@@ -1,22 +1,23 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
     ],
-    "hash": "957b6819c13ff483ebb0be25090ff984",
+    "hash": "deb12bcd9a7a86eadb38348661d0f98d",
     "packages": [
         {
             "name": "nategood/httpful",
-            "version": "0.2.11",
+            "version": "0.2.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nategood/httpful.git",
-                "reference": "0bf1423028abe2f630e1d2ef8d62486d6655b2f3"
+                "reference": "150bfb53f6e4b78e8152e0a9ccc227bb0e3daf62"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nategood/httpful/zipball/0bf1423028abe2f630e1d2ef8d62486d6655b2f3",
-                "reference": "0bf1423028abe2f630e1d2ef8d62486d6655b2f3",
+                "url": "https://api.github.com/repos/nategood/httpful/zipball/150bfb53f6e4b78e8152e0a9ccc227bb0e3daf62",
+                "reference": "150bfb53f6e4b78e8152e0a9ccc227bb0e3daf62",
                 "shasum": ""
             },
             "require": {
@@ -53,25 +54,25 @@
                 "rest",
                 "restful"
             ],
-            "time": "2013-10-20 11:03:40"
+            "time": "2014-07-19 15:28:59"
         },
         {
             "name": "shift31/hostbase-api-client",
-            "version": "dev-master",
+            "version": "dev-refactor",
             "source": {
                 "type": "git",
                 "url": "https://github.com/shift31/hostbase-api-client-php.git",
-                "reference": "b47a9164b2469b6fbd3b342bc468f829efd63b93"
+                "reference": "dcc3d8f21063054804bd1a053fdbdb14a75b8339"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/shift31/hostbase-api-client-php/zipball/b47a9164b2469b6fbd3b342bc468f829efd63b93",
-                "reference": "b47a9164b2469b6fbd3b342bc468f829efd63b93",
+                "url": "https://api.github.com/repos/shift31/hostbase-api-client-php/zipball/dcc3d8f21063054804bd1a053fdbdb14a75b8339",
+                "reference": "dcc3d8f21063054804bd1a053fdbdb14a75b8339",
                 "shasum": ""
             },
             "require": {
-                "nategood/httpful": "0.2.11",
-                "php": ">=5.3.0"
+                "nategood/httpful": "0.2.*",
+                "php": ">=5.3"
             },
             "type": "library",
             "autoload": {
@@ -84,7 +85,7 @@
                 "MIT"
             ],
             "description": "The Hostbase API Client Library for PHP",
-            "time": "2014-02-16 11:13:12"
+            "time": "2014-08-10 21:53:04"
         }
     ],
     "packages-dev": [
@@ -93,10 +94,11 @@
     "aliases": [
 
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "stability-flags": {
         "shift31/hostbase-api-client": 20
     },
+    "prefer-stable": false,
     "platform": {
         "php": ">=5.3"
     },
