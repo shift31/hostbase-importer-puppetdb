@@ -10,7 +10,7 @@
     "License": "MIT",
     "require": {
         "php": ">=5.3",
-        "shift31/hostbase-api-client": "dev-refactor",
+        "shift31/hostbase-api-client": "dev-develop",
         "nategood/httpful": "0.2.*"
     }
 }

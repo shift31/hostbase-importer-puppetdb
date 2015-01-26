@@ -4,20 +4,20 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "deb12bcd9a7a86eadb38348661d0f98d",
+    "hash": "8be965c861f5a4efd5c50367f0fc260e",
     "packages": [
         {
             "name": "nategood/httpful",
-            "version": "0.2.16",
+            "version": "0.2.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nategood/httpful.git",
-                "reference": "150bfb53f6e4b78e8152e0a9ccc227bb0e3daf62"
+                "reference": "7beda470b57250f60ce1b0179c5551620c3e43e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nategood/httpful/zipball/150bfb53f6e4b78e8152e0a9ccc227bb0e3daf62",
-                "reference": "150bfb53f6e4b78e8152e0a9ccc227bb0e3daf62",
+                "url": "https://api.github.com/repos/nategood/httpful/zipball/7beda470b57250f60ce1b0179c5551620c3e43e6",
+                "reference": "7beda470b57250f60ce1b0179c5551620c3e43e6",
                 "shasum": ""
             },
             "require": {
@@ -54,20 +54,20 @@
                 "rest",
                 "restful"
             ],
-            "time": "2014-07-19 15:28:59"
+            "time": "2014-08-24 21:57:36"
         },
         {
             "name": "shift31/hostbase-api-client",
-            "version": "dev-refactor",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/shift31/hostbase-api-client-php.git",
-                "reference": "dcc3d8f21063054804bd1a053fdbdb14a75b8339"
+                "reference": "50ace2db9ceb03987d7fd43d93a8a5d2331a24bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/shift31/hostbase-api-client-php/zipball/dcc3d8f21063054804bd1a053fdbdb14a75b8339",
-                "reference": "dcc3d8f21063054804bd1a053fdbdb14a75b8339",
+                "url": "https://api.github.com/repos/shift31/hostbase-api-client-php/zipball/50ace2db9ceb03987d7fd43d93a8a5d2331a24bd",
+                "reference": "50ace2db9ceb03987d7fd43d93a8a5d2331a24bd",
                 "shasum": ""
             },
             "require": {
@@ -84,25 +84,26 @@
             "license": [
                 "MIT"
             ],
+            "authors": [
+                {
+                    "name": "Shift 31 Consulting",
+                    "email": "code@shift31.com"
+                }
+            ],
             "description": "The Hostbase API Client Library for PHP",
-            "time": "2014-08-10 21:53:04"
+            "time": "2015-01-26 06:52:59"
         }
     ],
-    "packages-dev": [
-
-    ],
-    "aliases": [
-
-    ],
+    "packages-dev": [],
+    "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
         "shift31/hostbase-api-client": 20
     },
     "prefer-stable": false,
+    "prefer-lowest": false,
     "platform": {
         "php": ">=5.3"
     },
-    "platform-dev": [
-
-    ]
+    "platform-dev": []
 }
